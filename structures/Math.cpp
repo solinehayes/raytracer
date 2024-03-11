@@ -25,3 +25,21 @@ struct Ray {
     Ray(Vec3 o, Vec3 d) : origin(o), direction(d) {}
 };
 
+inline double clamp(double x){ return x<0 ? 0 : x>1 ? 1 : x; }
+
+void generateRandomPointOnSphere(double & theta , double & phi) {
+    double x = (double)(rand()) / RAND_MAX;
+    double y = (double)(rand()) / RAND_MAX;
+    theta = x * 2.0 * M_PI;
+    phi = acos( std::min<double>(1.0 , std::max<double>(-1.0 , 2.0*y - 1.0 ) ) );
+}
+Vec3 randomSampleOnSphere() {
+    double theta , phi;
+    generateRandomPointOnSphere(theta , phi);
+    return Vec3( cos(theta)*cos(phi) , sin(theta)*cos(phi) , sin(phi) );
+}
+Vec3 randomSampleOnHemisphere( Vec3 const & upDirection ) {
+    Vec3 r = randomSampleOnSphere();
+    if( r.dot(upDirection) > 0.0 ) return r;
+    return -1.0 * r;
+}
