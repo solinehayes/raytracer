@@ -1,3 +1,3 @@
 # Simple raycaster
 
-![](image.ppm)
+![](./image.png)
