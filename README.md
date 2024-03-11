@@ -1,3 +1,3 @@
-# Simple raycaster
+# Simple raytracer
 
 ![](./image.png)
