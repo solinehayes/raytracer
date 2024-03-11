@@ -1,1 +1,3 @@
 # Simple raycaster
+
+![](image.ppm)
